@@ -3,7 +3,7 @@ const list = document.getElementById('mail-list');
 const generateMail = () => {
   for (let i = 0; i < 10; i++) {
     axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then((resp) => {
-      list.innerHTML += `<li>${resp.data.response}</li>`
+      list.innerHTML += `<li class="list-group-item list-group-item-dark">${resp.data.response}</li>`
     })
   }
 }
