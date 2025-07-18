@@ -1,22 +1,20 @@
 const list = document.getElementById('mail-list');
 
-for (let i = 0; i < 10; i++) {
-  axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then((resp) => {
-    console.log(resp.data.response);
-    list.innerHTML += `<li>${resp.data.response}</li>`
-  })
-}
-
-const button = document.getElementById('restart');
-
-button.addEventListener('click', () => {
-  list.innerHTML = '';
+const generateMail = () => {
   for (let i = 0; i < 10; i++) {
     axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then((resp) => {
-      console.log(resp.data.response);
       list.innerHTML += `<li>${resp.data.response}</li>`
     })
   }
+}
 
+generateMail();
 
+const button = document.getElementById('restart');
+
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  list.innerHTML = '';
+  generateMail();
 })
